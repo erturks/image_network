@@ -100,8 +100,7 @@ class ImageNetwork extends StatefulWidget {
   State<ImageNetwork> createState() => _ImageNetworkState();
 }
 
-class _ImageNetworkState extends State<ImageNetwork>
-    with TickerProviderStateMixin {
+class _ImageNetworkState extends State<ImageNetwork> with TickerProviderStateMixin {
   late AnimationController _controller;
   late WebViewXController webviewController;
   late Animation<double> _animation;
@@ -167,7 +166,7 @@ class _ImageNetworkState extends State<ImageNetwork>
         /// Only show the webpage with the image if there's no error
         if (!error)
           Container(
-           // alignment: Alignment.centerLeft,
+            // alignment: Alignment.centerLeft,
             child: ClipRRect(
               borderRadius: widget.borderRadius,
               child: WebViewX(
@@ -185,8 +184,7 @@ class _ImageNetworkState extends State<ImageNetwork>
                 height: widget.height,
                 width: widget.width,
                 javascriptMode: JavascriptMode.unrestricted,
-                onWebViewCreated: (controller) =>
-                    webviewController = controller,
+                onWebViewCreated: (controller) => webviewController = controller,
                 onPageFinished: (src) {
                   if (widget.debugPrint) {
                     debugPrint('✓ The page has finished loading!\n');
@@ -199,18 +197,15 @@ class _ImageNetworkState extends State<ImageNetwork>
                   ),
                   EmbeddedJsContent(
                     webJs: "function onLoad(msg) { callbackLoad(msg) }",
-                    mobileJs:
-                        "function onLoad(msg) { callbackLoad.postMessage(msg) }",
+                    mobileJs: "function onLoad(msg) { callbackLoad.postMessage(msg) }",
                   ),
                   EmbeddedJsContent(
                     webJs: "function onTap(msg) { callbackTap(msg) }",
-                    mobileJs:
-                        "function onTap(msg) { callbackTap.postMessage(msg) }",
+                    mobileJs: "function onTap(msg) { callbackTap.postMessage(msg) }",
                   ),
                   EmbeddedJsContent(
                     webJs: "function onError(msg) { callbackError(msg) }",
-                    mobileJs:
-                        "function onError(msg) { callbackError.postMessage(msg) }",
+                    mobileJs: "function onError(msg) { callbackError.postMessage(msg) }",
                   ),
                 },
                 dartCallBacks: {
@@ -248,6 +243,7 @@ class _ImageNetworkState extends State<ImageNetwork>
               ),
             ),
           ),
+
         /// Only show the loading widget if the image is still loading and there's no error
         if (!error && loading)
           Align(
@@ -258,6 +254,7 @@ class _ImageNetworkState extends State<ImageNetwork>
               child: Center(child: widget.onLoading),
             ),
           ),
+
         /// Only show the error widget if there's an error
         if (error)
           Align(
@@ -313,9 +310,9 @@ class _ImageNetworkState extends State<ImageNetwork>
                     #myImg {
                       cursor: ${pointer ? "pointer" : ""};
                       transition: 0.3s;
-                      width: ${fullScreen ? "100%" : "$width" "px"};
+                     /* width: ${fullScreen ? "100%" : "$width" "px"};
                       height: ${fullScreen ? "100%" : "$height" "px"};
-                      /*object-fit: ${fitWeb.name(fitWeb as Fit)};*/
+                      object-fit: ${fitWeb.name(fitWeb as Fit)};*/
                     }
                     #myImg:hover {opacity: ${pointer ? "0.7" : ""}};}
                 </style>
