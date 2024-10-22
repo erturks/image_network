@@ -166,8 +166,8 @@ class _ImageNetworkState extends State<ImageNetwork>
       children: [
         /// Only show the webpage with the image if there's no error
         if (!error)
-          Align(
-            alignment: Alignment.center,
+          Container(
+           // alignment: Alignment.centerLeft,
             child: ClipRRect(
               borderRadius: widget.borderRadius,
               child: WebViewX(
@@ -315,7 +315,7 @@ class _ImageNetworkState extends State<ImageNetwork>
                       transition: 0.3s;
                       width: ${fullScreen ? "100%" : "$width" "px"};
                       height: ${fullScreen ? "100%" : "$height" "px"};
-                      object-fit: ${fitWeb.name(fitWeb as Fit)};
+                      /*object-fit: ${fitWeb.name(fitWeb as Fit)};*/
                     }
                     #myImg:hover {opacity: ${pointer ? "0.7" : ""}};}
                 </style>
